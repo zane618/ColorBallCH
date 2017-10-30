@@ -1,7 +1,10 @@
 package com.zane.colorballch;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +16,7 @@ import com.zane.colorballch.adapter.RedAdapter;
 import com.zane.colorballch.adapter.ResultAdapter;
 import com.zane.colorballch.base.BaseActivity;
 import com.zane.colorballch.model.ColorBallBean;
+import com.zane.colorballch.utilty.DateUtil;
 
 import java.util.List;
 
@@ -28,7 +32,33 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        verification();
         initviews();
+    }
+
+    private void verification() {
+        //就不用mvp了
+        SharedPreferences sp = this.getSharedPreferences("install_time", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        if (!sp.getString("install_time", "").equals("")) {
+            int hours = DateUtil.x(sp.getString("install_time", "2016-06-01 12:00"));
+            if (hours > 24) {
+                final AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                dialog.setTitle("提示");
+                dialog.setMessage("应用签名过期了，获取正版请联系开发者微信zane-618");
+                dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+            dialog.show();
+                return;
+            }
+        } else {
+            editor.putString("install_time", DateUtil.nowDateStr());
+            editor.commit();
+        }
     }
 
     private void initviews() {

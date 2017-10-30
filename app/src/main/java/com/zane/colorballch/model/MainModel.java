@@ -151,4 +151,5 @@ public class MainModel {
     public void clearScreen() {
         resultBalls.clear();
     }
+
 }
