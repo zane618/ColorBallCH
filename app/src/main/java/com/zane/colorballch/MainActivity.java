@@ -1,15 +1,19 @@
 package com.zane.colorballch;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.zane.colorballch.about.AboutActivity;
 import com.zane.colorballch.adapter.RedAdapter;
 import com.zane.colorballch.adapter.ResultAdapter;
 import com.zane.colorballch.base.BaseActivity;
@@ -33,6 +37,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     }
 
     private void initviews() {
+        getSupportActionBar().setTitle("双色球小助手");
         presenter = getPresenter();
         redRec = (GridView) findViewById(R.id.red_rec);
         blueRec = (GridView) findViewById(R.id.blue_rec);
@@ -62,6 +67,22 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
             }
         });
         presenter.init();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_activity_actions, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_about:
+                    startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
