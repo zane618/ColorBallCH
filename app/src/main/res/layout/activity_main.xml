@@ -44,9 +44,15 @@
         android:text="机选一注"/>
 
 </LinearLayout>
-    <TextView
-        android:id="@+id/tv_result"
-        android:layout_width="match_parent"
+    <GridView
+        android:id="@+id/result_rec"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
-        android:textSize="17sp"/>
+        android:layout_marginLeft="10dp"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="5dp"
+        android:listSelector="@android:color/transparent"
+        android:layout_marginTop="10dp"
+        android:columnWidth="35dp"
+        android:numColumns="7"/>
 </LinearLayout>

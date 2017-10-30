@@ -12,10 +12,14 @@ import java.util.List;
 public interface MainView extends BaseView {
 
     void onRedGridInit(List<ColorBallBean> reds);
+
     void onBlueGridInit(List<ColorBallBean> blues);
+
+    void onResultGridInit(List<String> resultBalls);
 
     void updateRed();
 
     void updateBlue();
-    void onRandomOne(String result);
+
+    void onRandomOne();
 }

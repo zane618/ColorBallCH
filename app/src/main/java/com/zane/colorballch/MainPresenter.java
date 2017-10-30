@@ -18,6 +18,7 @@ public class MainPresenter extends BasePresenter<MainView> {
         if (getView() != null) {
             getView().onRedGridInit(mainModel.getRedBalls());
             getView().onBlueGridInit(mainModel.getBlueBalls());
+            getView().onResultGridInit(mainModel.getResultBalls());
         }
     }
 
@@ -32,6 +33,12 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
     public void random() {
-        getView().onRandomOne(mainModel.random());
+        mainModel.random();
+        getView().onRandomOne();
+    }
+
+    public void clearScreen() {
+        mainModel.clearScreen();
+        getView().onRandomOne();
     }
 }

@@ -10,7 +10,6 @@ import java.util.Random;
  */
 
 public class MainModel {
-    public static boolean flag;
     private List<ColorBallBean> redBalls;
     private List<String> redNol = new ArrayList<>();
     private List<String> redY = new ArrayList<>();
@@ -18,6 +17,8 @@ public class MainModel {
     private List<ColorBallBean> blueBalls;
     private List<String> blueNol = new ArrayList<>();
     private List<String> blueY = new ArrayList<>();
+
+    private List<String> resultBalls = new ArrayList<>();
 
     public MainModel() {
         redBalls = new ArrayList<>();
@@ -41,7 +42,6 @@ public class MainModel {
             case 1:
                 redBalls.get(position).status += 1;
                 redY.add(redBalls.get(position).text + "");
-//                redNol.remove(String.valueOf(redBalls.get(position).text));
                 break;
             case 2:
                 redBalls.get(position).status = 0;
@@ -60,7 +60,6 @@ public class MainModel {
             case 1:
                 blueBalls.get(position).status += 1;
                 blueY.add(blueBalls.get(position).text + "");
-//                blueNol.remove(String.valueOf(blueBalls.get(position).text));
                 break;
             case 2:
                 blueBalls.get(position).status = 0;
@@ -76,8 +75,11 @@ public class MainModel {
     public List<ColorBallBean> getBlueBalls() {
         return blueBalls;
     }
+    public List<String> getResultBalls(){
+        return resultBalls;
+    }
 
-    public String random() {
+    public List<String> random() {
         List<String> tmpRedY = new ArrayList<>();
         tmpRedY.addAll(redY);
         List<String> tmpRedNol = new ArrayList<>();
@@ -93,14 +95,8 @@ public class MainModel {
             }
             //红色 >= 6的时候，再添加个蓝色
             randomBlue(ran);
-            StringBuilder result = new StringBuilder("红球   ");
-            for (int x = 0; x < ran.size(); x++) {
-                if (x == 6) {
-                    result.append("    篮球  ");
-                }
-                result.append(ran.get(x) + " ");
-            }
-            return result.toString();
+            resultBalls.addAll(ran);
+            return ran;
         } else {
             while (tmpRedY.size() > 0) {
                 String rValue = tmpRedY.get(r.nextInt(tmpRedY.size()));
@@ -113,14 +109,8 @@ public class MainModel {
                 tmpRedNol.remove(rValue);
             }
             randomBlue(ran);
-            StringBuilder result = new StringBuilder("红球   ");
-            for (int x = 0; x < ran.size(); x++) {
-                if (x == 6) {
-                    result.append("篮球  ");
-                }
-                result.append(ran.get(x) + " ");
-            }
-            return result.toString();
+            resultBalls.addAll(ran);
+            return ran;
         }
     }
 
@@ -156,5 +146,9 @@ public class MainModel {
                 }
             }
         }
+    }
+
+    public void clearScreen() {
+        resultBalls.clear();
     }
 }

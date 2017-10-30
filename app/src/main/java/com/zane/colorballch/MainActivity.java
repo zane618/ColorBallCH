@@ -11,6 +11,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.zane.colorballch.adapter.RedAdapter;
+import com.zane.colorballch.adapter.ResultAdapter;
 import com.zane.colorballch.base.BaseActivity;
 import com.zane.colorballch.model.ColorBallBean;
 
@@ -19,10 +20,11 @@ import java.util.List;
 public class MainActivity extends BaseActivity<MainView, MainPresenter> implements MainView{
     private GridView redRec;
     private GridView blueRec;
+    private GridView resultRec;
     private RedAdapter redAdapter;
     private RedAdapter blueAdapter;
+    private ResultAdapter resultAdapter;
     private MainPresenter presenter;
-    private TextView tvResult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +34,9 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
 
     private void initviews() {
         presenter = getPresenter();
-        tvResult = (TextView) findViewById(R.id.tv_result);
         redRec = (GridView) findViewById(R.id.red_rec);
         blueRec = (GridView) findViewById(R.id.blue_rec);
+        resultRec = (GridView) findViewById(R.id.result_rec);
         redRec.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -56,7 +58,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
         findViewById(R.id.btn_clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvResult.setText("");
+                presenter.clearScreen();
             }
         });
         presenter.init();
@@ -85,6 +87,12 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     }
 
     @Override
+    public void onResultGridInit(List<String> resultBalls) {
+        resultAdapter = new ResultAdapter(resultBalls, this);
+        resultRec.setAdapter(resultAdapter);
+    }
+
+    @Override
     public void updateRed() {
         redAdapter.notifyDataSetChanged();
     }
@@ -95,13 +103,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     }
 
     @Override
-    public void onRandomOne(String result) {
-        String tvText = tvResult.getText().toString();
-        if (TextUtils.isEmpty(tvText)) {
-            tvResult.setText(result);
-        } else {
-            tvResult.setText(tvResult.getText() + "\r\n\r\n" + result);
-        }
-
+    public void onRandomOne() {
+        resultAdapter.notifyDataSetChanged();
     }
 }
