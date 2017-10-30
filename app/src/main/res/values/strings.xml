@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ColorBallCH</string>
+    <string name="about">使用说明：\r\n
+    1.杀号：球点击一下变成红色，机选过滤此号\r\n
+    2.选号：球点击两下变成蓝色，机选优先选取该号\r\n\r\n
+    3.意见反馈请联系微信：zane-618</string>
 </resources>

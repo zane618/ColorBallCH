@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 
 public class ColorBallBean implements Serializable {
-    //0未选中  1要  2不要
+    //0未选中  1不要  2要
     public int status;
     public int text;
 
