@@ -1,13 +1,12 @@
 package com.zane.colorballch.about;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.zane.colorballch.R;
-import com.zane.colorballch.base.BaseActivity;
 
 /**
  * Created by shizhang on 2017/10/30.

@@ -1,8 +1,9 @@
 package com.zane.colorballch.base;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 /**
  * Created by shizhang on 2017/10/29.
