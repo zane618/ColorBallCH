@@ -35,6 +35,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
         setContentView(R.layout.activity_main);
         verification();
         initviews();
+
     }
 
     private void verification() {
