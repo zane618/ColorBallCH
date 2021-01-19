@@ -16,7 +16,7 @@ class RedAdapter : BaseQuickAdapter<ColorBall, BaseViewHolder> {
         tvBall.text = item.num.toString()
         when (item.status) {
             0 -> {
-                tvBall.setBackgroundResource(R.drawable.shape_red)
+                tvBall.setBackgroundResource(R.drawable.shape_white)
                 tvBall.setTextColor(Color.parseColor("#FF2D51"))
             }
             1 -> {

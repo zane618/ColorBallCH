@@ -2,6 +2,7 @@
 <TextView android:id="@+id/tv_ball"
     android:layout_width="35dp"
     android:layout_height="35dp"
+
     android:textSize="16sp"
     android:gravity="center"
     xmlns:android="http://schemas.android.com/apk/res/android" />
