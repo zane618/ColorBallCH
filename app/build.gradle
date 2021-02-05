@@ -6,7 +6,7 @@ android {
         release {
             keyAlias 'zane'
             keyPassword 'zane618'
-            storeFile file('D:\\signfile.jks')
+            storeFile file('signfile.jks')
             storePassword 'zane618'
         }
     }
