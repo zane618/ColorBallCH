@@ -44,7 +44,7 @@
 -keep class android.support.v4.** { *; }
 -keep public class * extends android.support.v4.**
 #忽略警告
--ignorewarning
+-ignorewarnings
 
 #保持自定义控件类不被混淆
 -keepclasseswithmembers class * {

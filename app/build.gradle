@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android'
 android {
     signingConfigs {
         release {
-            keyAlias 'zane'
+            keyAlias 'zane618'
             keyPassword 'zane618'
             storeFile file('signfile.jks')
             storePassword 'zane618'
@@ -22,11 +22,11 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
 //            shrinkResources true//移除无用的resource文件
-            zipAlignEnabled true //Zipalign优化
+            zipAlignEnabled false //Zipalign优化
         }
     }
 }
